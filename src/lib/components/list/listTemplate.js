@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '../card'
 import style from './index.css'
 import {More} from '../icons'
-const ListTemplate = ({toggleActionPopupId, processStatus, updateProcess, actionPopupId, actionPopup, toggleActions, setTitle, name, agents, status, percentage, info, cards, outputs, id, openModal, moveCard, openCardController, cardController, addCardToList, updateNewCardTitle, newCardTitle}) => {
+const ListTemplate = ({toggleActionPopupId, processStatus, updateProcess, actionPopupId, actionPopup, toggleActions, setTitle, name, agents, status, percentage, info, cards, outputs, id, openModal, moveCard, cardController, addCardToList, updateNewCardTitle, newCardTitle}) => {
   return (
   <div className={style.list_wrapper}>
     { actionPopup && Number(actionPopupId) === Number(id)

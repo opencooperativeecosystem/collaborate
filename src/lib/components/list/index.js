@@ -1,33 +1,8 @@
-import { DropTarget } from 'react-dnd'
-
-import {CardTypes} from '../constants/card'
 import List from './list'
 import {compose, withState, withHandlers} from 'recompose'
-// import Component from './listTemplate'
 import {graphql} from 'react-apollo'
 import gql from 'graphql-tag'
 import Plan from '../queries/getPlan'
-
-const cardTarget = {
-  drop (props, monitor, component) {
-    const nextListId = props.id
-    const cardId = monitor.getItem().id
-    const currentListId = monitor.getItem().listId
-
-    if (nextListId === currentListId) {
-      return
-    }
-    // props.removeCardFromList(cardId, currentListId)
-    props.swipeCard(cardId, currentListId, nextListId)
-  }
-}
-
-function dropCollect (connect, monitor) {
-  return {
-    connectDropTarget: connect.dropTarget(),
-    isOVer: monitor.isOver()
-  }
-}
 
 const updateProcess = gql`
 mutation ($token: String!, $id: Int!, $isFinished: Boolean ) {
@@ -93,4 +68,4 @@ const enhancedList = compose(
     })
   )(List)
 
-export default DropTarget(CardTypes.CARD, cardTarget, dropCollect)(enhancedList)
+export default enhancedList
