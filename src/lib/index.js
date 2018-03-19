@@ -1,3 +1,10 @@
-import Example from './components/'
+import Collaborate from './collaborate'
+import Agent from './agent'
+import Canvas from './canvas'
 
-export default Example
+export default Collaborate
+
+export {
+    Agent,
+    Canvas
+}

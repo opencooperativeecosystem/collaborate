@@ -2,17 +2,10 @@ import { compose, withState, withHandlers } from 'recompose'
 import {graphql} from 'react-apollo'
 import UpdateCommitmentTitle from '../../../mutations/updateCommitmentTitle'
 import ModalTitle from './modalTitle'
-import {addFlagAction} from '../../../store/actions/flags'
 import {connect} from 'react-redux'
 
 const mapStateToProps = state => ({
   state
-})
-
-const mapDispatchToProps = dispatch => ({
-  addFlag: (data) => {
-    dispatch(addFlagAction(data))
-  }
 })
 
 export default compose(
@@ -23,11 +16,11 @@ export default compose(
       note: note
     })
   }),
-  connect(mapStateToProps, mapDispatchToProps),
+  connect(mapStateToProps),
   withState('isVisible', 'toggleVis', false),
   withHandlers({
     toggleVisibility: ({ toggleVis, isVisible }) => (event) => toggleVis(!isVisible),
-    editTitle: ({mutate, id, note, addFlag}) => (event) => mutate({
+    editTitle: ({mutate, id, note}) => (event) => mutate({
       variables: {
         token: localStorage.getItem('token'),
         id: id,
@@ -35,10 +28,7 @@ export default compose(
       }
     })
     .then(data => console.log(data))
-    .catch(e => addFlag({
-      title: 'Not authorized',
-      message: 'You do not have the permission to edit the commitment note'
-    }))
+    .catch(e => (console.log(e)))
   })
 )(ModalTitle)
 

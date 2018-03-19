@@ -1,9 +1,6 @@
-import React from 'react'
-import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import Component from './index'
 
-const plan = gql`
+const agentQuery = gql`
 query ($token: String, $id: Int) {
     viewer(token: $token) {
       agent(id: $id) {
@@ -74,29 +71,6 @@ query ($token: String, $id: Int) {
       }
     }
   }
-  
 `
-class AgentWrapper extends React.Component {
-  render () {
-    const {loading, error, data} = this.props
-    return (
-      loading ? <strong>Loading...</strong> : (
-        error ? <p style={{ color: '#F00' }}>API error</p> : (
-        <Component data={data} />
-      ))
-    )
-  }
-}
 
-export default graphql(plan, {
-  options: (props) => ({ variables: {
-    token: localStorage.getItem('token'),
-    id: props.match.params.id
-  }}),
-  props: ({ ownProps, data: { viewer, loading, error, refetch } }) => ({
-    loading: loading,
-    error: error,
-    refetchAgent: refetch,  // :NOTE: call this in the component to force reload the data
-    data: viewer ? viewer.agent : null
-  })
-})(AgentWrapper)
+export default agentQuery

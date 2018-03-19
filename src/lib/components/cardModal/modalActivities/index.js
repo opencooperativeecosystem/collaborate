@@ -2,16 +2,8 @@ import {compose, withHandlers, withState} from 'recompose'
 import Component from './modalActivities'
 import {graphql} from 'react-apollo'
 import gql from 'graphql-tag'
-// import {addFlagAction} from '../../../store/actions/flags'
 import {connect} from 'react-redux'
 import { actions as notifActions } from 'redux-notifications'
-
-// const mapDispatchToProps = dispatch => ({
-//   addFlag: (data) => {
-//     dispatch(addFlagAction(data))
-//   }
-// })
-
 
 const mapStateToProps = (state) => {
   return {
@@ -117,7 +109,7 @@ export default compose(
         props.setIdToUpdate(id)
         props.toggleEditEvent(!status)
       },
-      deleteEvent: ({sendNotif, toggleDeleteEvent, deleteEventModal, mutate, addFlag}) => (id) => {
+      deleteEvent: ({sendNotif, toggleDeleteEvent, deleteEventModal, mutate}) => (id) => {
         return (
           mutate({
             variables: {

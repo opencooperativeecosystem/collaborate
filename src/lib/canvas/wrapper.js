@@ -9,7 +9,7 @@ class CanvasWrapper extends React.Component {
     return (
         loading ? <strong>Loading...</strong> : (
           error ? <p style={{ color: '#F00' }}>API error</p> : (
-          <Component data={viewer} param={this.props.match.params.id} />
+           <Component data={viewer} param={this.props.match.params.id} />
         ))
     )
   }

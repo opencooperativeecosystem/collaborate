@@ -7,7 +7,7 @@ import Feed from './components/feed/feed'
 import Cards from './components/cards'
 
 const Lists = (props) => {
-  const {viewer, loading, error} = this.props.data
+  const {viewer, loading, error} = props.data
   return (
     loading ? <strong>Loading...</strong> : (
     error ? <p style={{ color: '#F00' }}>API error</p> : (

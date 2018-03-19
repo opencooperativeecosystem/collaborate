@@ -1,5 +1,5 @@
 import React from 'react'
-import Card from '../card'
+import Card from '../card/card'
 import style from './index.css'
 import {More} from '../icons'
 const ListTemplate = ({toggleActionPopupId, processStatus, updateProcess, actionPopupId, actionPopup, toggleActions, setTitle, name, agents, status, percentage, info, cards, outputs, id, openModal, moveCard, cardController, addCardToList, updateNewCardTitle, newCardTitle}) => {
@@ -53,7 +53,7 @@ const ListTemplate = ({toggleActionPopupId, processStatus, updateProcess, action
             wip={card.wip}
             status={card.status}
             note={card.note || card.title}
-            newNote= {''}
+            newNote={''}
             members={card.members}
             due={card.due}
             percentage={card.percentage}
