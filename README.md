@@ -1,64 +1,76 @@
-# React NPM library starter kit
+# Collaborate
 
-[![Build Status](https://travis-ci.org/DimitriMikadze/create-react-library.svg?branch=master)](https://travis-ci.org/DimitriMikadze/create-react-library)
-[![Dependencies](https://img.shields.io/david/DimitriMikadze/create-react-library.svg)]()
-[![Dev Dependencies](https://img.shields.io/david/dev/DimitriMikadze/create-react-library.svg)]()
+Collaborate is a statefull component, part of the OCE suite. It can be installed as any other npm module and imported into your application. It includes: 
+- A profile page
+- An agent page for each agent a user has a relationship with feed, members, plans and resources tab
+- A kanban view for each plan
 
-based on Facebook's <a href="https://github.com/facebookincubator/create-react-app" target="_blank">Create react app</a>.
-We are constantly updating repository with the updates of `create-react-app`, so we have all new features and bug fixes of it.
-
-## Converted to custom setup
-
-Moved all dependencies to dev dependencies because we don't need extra dependencies for our library after build, but we want all this features while developing: 
-
-* React, JSX, ES6, and Flow syntax support.
-* Language extras beyond ES6 like the object spread operator.
-* A dev server that lints for common errors.
-* Import CSS and image files directly from JavaScript.
-* Autoprefixed CSS, so you don’t need `-webkit` or other prefixes.
-* A `build` script to bundle JS, CSS, and images for production.
+Btw Collaborate is currently a submodule of [dashboard](github.com/opencooperativeecosystem/dashboard), and it depends on a specific valueflows graphql layer to fetch/update data.
 
 ## Getting Started
 
-Clone repo
+```npm install collaborate``` 
 
-````
-git clone https://github.com/DimitriMikadze/create-react-library.git
-````
+### Basic Example
 
-Install dependencies
+```js
+import Collaborate from 'collaborate'
 
-`npm install` or `yarn install`
+ReactDOM.render(
+  <ApolloProvider client={client}>
+      <Router>
+        <AppTemplate>
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/' component={() => (<h1>overview</h1>)} />
+          <Route path='/work' component={Work} />
+          <Route path='/settings' component={Settings} />
+        </AppTemplate>
+      </Router>
+  </ApolloProvider>,
+document.getElementById('root')
+)
+```
 
-Start development server
+### Running locally
 
-`npm start` or `yarn start`
+The collaborate app comes together with a `demo` folder, that includes the app inside a dashboard and handles mainly the login part with the graphql API (TODO: setup a local graphql instance)
 
-Runs the demo app in development mode.
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+git clone https://github.com/opencooperativeecosystem/collaborate.git
+cd collaborate
+npm install
+npm start
+```
+Open on your browser localhost:3000
 
-## Library files
 
-All library files are located inside `src/lib`  
+## Running the tests
 
-## Demo app
+TODO
 
-Is located inside `src/demo` directory, here you can test your library while developing
+## Built With
 
-## Testing
+* [React](http://github.com/reactjs/)
+* [Apollo](https://github.com/apollographql/)
+* [PostCSS](https://github.com/postcss/)
 
-`npm run test` or `yarn run test`
+## Contributing
 
-## Build library
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-`npm run build` or `yarn run build`
+## Authors
 
-Produces production version of library under the `build` folder.
+* **Ivan Minutillo** - *Initial work* - [Bernini](https://github.com/ivanminutillo)
 
-## Publish library
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
-`npm publish`
+## License
 
-## Example library built with this starter kit
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-https://github.com/DimitriMikadze/react-under-construction
+## Acknowledgments
+
+* Hat tip to anyone who's code was used
+* Inspiration
+* etc
+
