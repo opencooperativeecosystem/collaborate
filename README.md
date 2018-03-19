@@ -4,7 +4,8 @@ Collaborate is a statefull component, part of the OCE suite. It can be installed
 - A profile page
 - An agent page for each agent a user has a relationship with feed, members, plans and resources tab
 - A kanban view for each plan
-Btw Collaborate its currently a submodule of the [dashboard](github.com/opencooperativeecosystem/dashboard), and it depends on a specific valueflows graphql layer to fetch/update data.
+
+Btw Collaborate is currently a submodule of [dashboard](github.com/opencooperativeecosystem/dashboard), and it depends on a specific valueflows graphql layer to fetch/update data.
 
 ## Getting Started
 
