@@ -8,10 +8,6 @@ Btw Collaborate its currently a submodule of the [dashboard](github.com/opencoop
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Installing
-
 ```npm install collaborate``` 
 
 ### Basic Example
@@ -26,7 +22,6 @@ ReactDOM.render(
           <Route exact path='/login' component={Login} />
           <Route exact path='/' component={() => (<h1>overview</h1>)} />
           <Route path='/work' component={Work} />
-          <Route path='/validate' component={() => (<h1>validate</h1>)} />
           <Route path='/settings' component={Settings} />
         </AppTemplate>
       </Router>
@@ -54,9 +49,9 @@ TODO
 
 ## Built With
 
-* [React](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Apollo](https://maven.apache.org/) - GraphQl HOC
-* [PostCSS](https://rometools.github.io/rome/) - The css good way :)
+* [React](http://github.com/reactjs/)
+* [Apollo](https://github.com/apollographql/)
+* [PostCSS](https://github.com/postcss/)
 
 ## Contributing
 
