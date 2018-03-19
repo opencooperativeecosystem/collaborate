@@ -1,64 +1,78 @@
-# React NPM library starter kit
+# Collaborate
 
-[![Build Status](https://travis-ci.org/DimitriMikadze/create-react-library.svg?branch=master)](https://travis-ci.org/DimitriMikadze/create-react-library)
-[![Dependencies](https://img.shields.io/david/DimitriMikadze/create-react-library.svg)]()
-[![Dev Dependencies](https://img.shields.io/david/dev/DimitriMikadze/create-react-library.svg)]()
-
-based on Facebook's <a href="https://github.com/facebookincubator/create-react-app" target="_blank">Create react app</a>.
-We are constantly updating repository with the updates of `create-react-app`, so we have all new features and bug fixes of it.
-
-## Converted to custom setup
-
-Moved all dependencies to dev dependencies because we don't need extra dependencies for our library after build, but we want all this features while developing: 
-
-* React, JSX, ES6, and Flow syntax support.
-* Language extras beyond ES6 like the object spread operator.
-* A dev server that lints for common errors.
-* Import CSS and image files directly from JavaScript.
-* Autoprefixed CSS, so you don’t need `-webkit` or other prefixes.
-* A `build` script to bundle JS, CSS, and images for production.
+Collaborate is a statefull component, part of the OCE suite. It can be installed as any other npm module and imported into your application. It includes: 
+- A profile page
+- An agent page for each agent a user has a relationship with feed, members, plans and resources tab
+- A kanban view for each plan
+Btw Collaborate its currently a submodule of the [dashboard](github.com/opencooperativeecosystem/dashboard), and it depends on a specific valueflows graphql layer to fetch/update data.
 
 ## Getting Started
 
-Clone repo
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-````
-git clone https://github.com/DimitriMikadze/create-react-library.git
-````
+### Installing
 
-Install dependencies
+The collaborate app comes together with a `demo` folder, that includes the app inside a dashboard and handles mainly the login part with the graphql API (TODO: setup a local graphql instance)
 
-`npm install` or `yarn install`
+```
+git clone https://github.com/opencooperativeecosystem/collaborate.git
+cd collaborate
+npm install
+npm start
+```
+Open on your browser localhost:3000
 
-Start development server
+## Running the tests
 
-`npm start` or `yarn start`
+Explain how to run the automated tests for this system
 
-Runs the demo app in development mode.
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Break down into end to end tests
 
-## Library files
+Explain what these tests test and why
 
-All library files are located inside `src/lib`  
+```
+Give an example
+```
 
-## Demo app
+### And coding style tests
 
-Is located inside `src/demo` directory, here you can test your library while developing
+Explain what these tests test and why
 
-## Testing
+```
+Give an example
+```
 
-`npm run test` or `yarn run test`
+## Deployment
 
-## Build library
+Add additional notes about how to deploy this on a live system
 
-`npm run build` or `yarn run build`
+## Built With
 
-Produces production version of library under the `build` folder.
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
 
-## Publish library
+## Contributing
 
-`npm publish`
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Example library built with this starter kit
+## Versioning
 
-https://github.com/DimitriMikadze/react-under-construction
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+* **Ivan Minutillo** - *Initial work* - [Bernini](https://github.com/ivanminutillo)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone who's code was used
+* Inspiration
+* etc
+
