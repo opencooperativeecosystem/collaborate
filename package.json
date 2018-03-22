@@ -1,6 +1,6 @@
 {
   "name": "collaborate",
-  "version": "0.6.21",
+  "version": "0.6.22",
   "description": "A react module to handle collaboration in loosely groups of peers based on REA syntax",
   "main": "build/index.js",
   "scripts": {
