@@ -2,9 +2,11 @@ import React from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import style from './App.css'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
-import Feed from './components/feed/feed'
-import Cards from './components/cards'
+import {Link} from 'react-router-dom'
+
+// import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+// import Feed from './components/feed/feed'
+// import Cards from './components/cards'
 
 const Lists = (props) => {
   const {viewer, loading, error} = props.data
@@ -14,8 +16,24 @@ const Lists = (props) => {
       <div className={style.profile_lists}>
         <div className={style.lists}>
           <h2 className={style.profile_title}><span role='img'>👋</span> Hello {viewer.myAgent.name}</h2>
-          <h5 className={style.profile_address}>ƒ <span>{viewer.myAgent.faircoinAddress}</span></h5>
           <div className={style.section}>
+            <div className={style.section_wrapper}>
+              <h5>You can log your work on the following projects:</h5>
+              <div className={style.wrapper_list}>
+                  {viewer.myAgent.agentRelationships.map((item, i) => (
+                    <div className={style.list_item} key={i}>
+                      <Link to={`${props.match.url}/agent/${item.object.id}`}>
+                        <h3>{item.object.name}</h3>
+                        <h5>{item.object.note}</h5>
+                        <h6>{item.relationship.label}</h6>
+                      </Link>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </div>
+          {/* <h5 className={style.profile_address}>ƒ <span>{viewer.myAgent.faircoinAddress}</span></h5> */}
+          {/* <div className={style.section}>
             <div className={style.section_wrapper}>
               <Tabs selectedTabClassName={style.list_active}>
                 <TabList className={style.scope_list}>
@@ -39,7 +57,7 @@ const Lists = (props) => {
                 </TabPanel>
               </Tabs>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     ))
@@ -48,93 +66,26 @@ const Lists = (props) => {
 
 const agentPlans = gql`
 query ($token: String) {
-    viewer(token: $token) {
-      myAgent {
-        id
-        name
-        faircoinAddress
-        image
-        agentEconomicEvents {
-          note
-          action
-          requestDistribution
-          provider {
-            image
-            name
-          }
-          inputOf {
-            name
-          }
-          receiver {
-            name
-          }
-          start
-          note
-          affectedQuantity {
-            numericValue
-            unit {
-              name
-            }
-          }
+  viewer(token: $token) {
+    myAgent {
+      id
+      name
+      image
+      agentRelationships {
+        relationship {
+          label
+          category
         }
-        agentCommitments(latestNumberOfDays: 30) {
+        object {
           id
-          action
-          plannedStart
-          committedOn
-          due
-          committedQuantity {
-            numericValue
-            unit {
-              name
-            }
-          }
-          resourceClassifiedAs {
-            name
-            category
-          }
-          provider {
-            id
-            name
-          }
-          receiver {
-            id
-            name
-          }
-          note
-        }
-        agentRelationships {
-          relationship {
-            label
-            category
-          }
-          object {
-            id
-            name
-            note
-            image
-          }
-        }
-        agentPlans {
           name
-          id
           note
-          due
-          plannedOn
-          planProcesses {
-            isStarted
-            isFinished
-            name
-            workingAgents {
-              id
-              name
-              image
-            }
-          }
+          image
         }
       }
     }
-  }  
+  }
+}  
 `
 
 export default graphql(agentPlans, {
