@@ -69,7 +69,7 @@ const App = withRouter(AppTemplate)
 
 export default graphql(agentPlans, {
   options: (props) => ({variables: {
-    token: localStorage.getItem('token')
+    token: localStorage.getItem('oce_token')
   }}),
   props: ({ownProps, data: {viewer, loading, error, refetch}}) => ({
     loading,

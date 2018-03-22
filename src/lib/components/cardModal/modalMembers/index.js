@@ -32,7 +32,7 @@ export default compose(
       return (
         mutate({
           variables: {
-            token: localStorage.getItem('token'),
+            token: localStorage.getItem('oce_token'),
             id: id,
             providerId: event.target.id
           }

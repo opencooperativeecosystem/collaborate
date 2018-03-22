@@ -40,14 +40,14 @@ const enhancedList = compose(
         return (
           updateProcessMutation({
             variables: {
-              token: localStorage.getItem('token'),
+              token: localStorage.getItem('oce_token'),
               id: id,
               isFinished: status
             },
             update: (store, {data}) => {
               let planProcessesCache = store.readQuery({query: Plan, 
                 variables: {
-                  token: localStorage.getItem('token'),
+                  token: localStorage.getItem('oce_token'),
                   planId: Number(data.updateProcess.process.processPlan.id)
                 }})
               
@@ -55,7 +55,7 @@ const enhancedList = compose(
               planProcessesCache.viewer.plan.planProcesses[processToUpdateIndex].isFinished = data.updateProcess.process.isFinished
               store.writeQuery({ query: Plan,
                 variables: {
-                  token: localStorage.getItem('token'),
+                  token: localStorage.getItem('oce_token'),
                   planId: Number(data.updateProcess.process.processPlan.id)
                 },
                 data: planProcessesCache })

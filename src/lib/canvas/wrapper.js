@@ -18,7 +18,7 @@ class CanvasWrapper extends React.Component {
 export default graphql(Plan, {
   options: (props) => ({ 
     variables: {
-      token: localStorage.getItem('token'),
+      token: localStorage.getItem('oce_token'),
       planId: Number(props.match.params.id)
     }
   }),

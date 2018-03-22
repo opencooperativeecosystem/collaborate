@@ -58,7 +58,7 @@ const CardModal = ({param, id, toggleActions, actionPopup, updateCommitment, all
 
 export default compose(
   graphql(GetCommitment, {
-    options: ({id}) => ({ variables: { token: localStorage.getItem('token'), id: id}}),
+    options: ({id}) => ({ variables: { token: localStorage.getItem('oce_token'), id: id}}),
     props: ({ ownProps, data: { viewer, loading, error, refetch } }) => ({
       loading,
       error,
@@ -82,14 +82,14 @@ export default compose(
       return (
         updateCommitmentMutation({
           variables: {
-            token: localStorage.getItem('token'),
+            token: localStorage.getItem('oce_token'),
             id: id,
             isFinished: status
           },
           update: (store, {data}) => {
             let commitmentCache = store.readQuery({query: GetCommitment,
               variables: {
-                token: localStorage.getItem('token'),
+                token: localStorage.getItem('oce_token'),
                 id: Number(id)
               }})
             console.log(commitmentCache)
@@ -98,7 +98,7 @@ export default compose(
             commitmentCache.viewer.commitment.isFinished = data.updateCommitment.commitment.isFinished
             store.writeQuery({ query: GetCommitment,
               variables: {
-                token: localStorage.getItem('token'),
+                token: localStorage.getItem('oce_token'),
                 id: Number(id)
               },
               data: commitmentCache })

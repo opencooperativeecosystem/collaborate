@@ -267,7 +267,7 @@ const wrapperComponent = compose(
       return (
         props.createEventMutation({
           variables: {
-            token: localStorage.getItem('token'),
+            token: localStorage.getItem('oce_token'),
             id: props.id,
             action: props.action,
             scopeId: props.scopeId,
@@ -282,13 +282,13 @@ const wrapperComponent = compose(
           update: (store, { data }) => {
             let agentPlanCache = store.readQuery({ query: plan,
               variables: {
-                token: localStorage.getItem('token'),
+                token: localStorage.getItem('oce_token'),
                 planId: Number(props.param)
               }}
             )
             let agentEventsCache = store.readQuery({ query: queryEvents,
               variables: {
-                token: localStorage.getItem('token'),
+                token: localStorage.getItem('oce_token'),
                 id: Number(props.id)
               }}
             )
@@ -328,14 +328,14 @@ const wrapperComponent = compose(
     
             store.writeQuery({ query: plan,
               variables: {
-                token: localStorage.getItem('token'),
+                token: localStorage.getItem('oce_token'),
                 id: props.param
               },
               data: agentPlanCache })
     
             store.writeQuery({ query: queryEvents,
               variables: {
-                token: localStorage.getItem('token'),
+                token: localStorage.getItem('oce_token'),
                 id: props.id
               },
               data: agentEventsCache })
@@ -352,7 +352,7 @@ const wrapperComponent = compose(
       return (
         props.updateEventMutation({
           variables: {
-            token: localStorage.getItem('token'),
+            token: localStorage.getItem('oce_token'),
             id: props.eventId,
             action: props.action,
             scopeId: props.scopeId,
@@ -367,13 +367,13 @@ const wrapperComponent = compose(
           update: (store, { data }) => {
             let agentPlanCache = store.readQuery({ query: plan,
               variables: {
-                token: localStorage.getItem('token'),
+                token: localStorage.getItem('oce_token'),
                 planId: Number(props.param)
               }}
             )
             let agentEventsCache = store.readQuery({ query: queryEvents,
               variables: {
-                token: localStorage.getItem('token'),
+                token: localStorage.getItem('oce_token'),
                 id: Number(props.id)
               }}
             )
@@ -426,14 +426,14 @@ const wrapperComponent = compose(
     
             store.writeQuery({ query: plan,
               variables: {
-                token: localStorage.getItem('token'),
+                token: localStorage.getItem('oce_token'),
                 id: props.param
               },
               data: agentPlanCache })
     
             store.writeQuery({ query: queryEvents,
               variables: {
-                token: localStorage.getItem('token'),
+                token: localStorage.getItem('oce_token'),
                 id: props.id
               },
               data: agentEventsCache })

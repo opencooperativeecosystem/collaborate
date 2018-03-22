@@ -22,7 +22,7 @@ export default compose(
     toggleVisibility: ({ toggleVis, isVisible }) => (event) => toggleVis(!isVisible),
     editTitle: ({mutate, id, note}) => (event) => mutate({
       variables: {
-        token: localStorage.getItem('token'),
+        token: localStorage.getItem('oce_token'),
         id: id,
         note: event.target.value
       }
