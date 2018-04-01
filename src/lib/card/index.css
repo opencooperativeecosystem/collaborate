@@ -21,6 +21,53 @@
     padding-top: 0;
 }
 
+.info_status {
+  lost-utility: clearfix;
+}
+.completedTask {
+  height: 24px;
+  line-height: 24px;
+  line-height: 24px;
+  font-size: 13px;
+  font-weight: 500;
+  margin:0;
+  background: #36B37E;
+  border-radius: 3px;
+  color: #172b4d;
+  cursor: default;
+  height: 20px;
+  line-height: 20px;
+  margin: 10px 2px 5px 0;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 3px 15px;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  float: left;
+  -ms-flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+.isFinished {
+  background: #36b37d;
+  padding-top: 10px;
+}
+
+.isFinished:hover {
+  background: #2e9267 !important;
+}
+
+.isFinished .infos_due {
+  color: #e1e1e1 !important;
+}
+
 .card:hover {
   background: #EDEFF0;
   border-bottom-color: #d6dacc;
@@ -43,7 +90,7 @@
 }
 
 .card_infos{
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .card_infos .infos_due{

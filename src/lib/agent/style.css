@@ -7,6 +7,8 @@
 .agent_info {
     /* lost-column: 8/10;
     lost-offset: 1/10; */
+    lost-utility:clearfix;
+    display: table;
 }
 
 .item_member {
@@ -113,9 +115,10 @@
     width: 40px;
     height: 40px;
     border-radius: 100%;
-    float: left;
+    display: inline-block;
     margin-right: 10px;
     background: #606060;
+    vertical-align: bottom;
 }
 
 .image_photo {
@@ -126,7 +129,9 @@
 }
 
 .info_title {
-    float: left;
+    /* float: left; */
+    /* lost-column:1/1; */
+    display: table-cell;
     font-size: 20px;
     font-weight: 500;
     letter-spacing: .5px;

@@ -42,22 +42,23 @@ const ListTemplate = ({toggleActionPopupId, processStatus, updateProcess, action
         {cards ? cards
         .map((card, i) => (
           <div key={i}>
-          <Card
-            key={card.id}
-            listId={id}
-            id={card.id}
-            index={i}
-            openModal={openModal}
-            name={card.title}
-            moveCard={moveCard}
-            wip={card.wip}
-            status={card.status}
-            note={card.note || card.title}
-            newNote={''}
-            members={card.members}
-            due={card.due}
-            percentage={card.percentage}
-          />
+            <Card
+              key={card.id}
+              listId={id}
+              id={card.id}
+              index={i}
+              openModal={openModal}
+              name={card.title}
+              isFinished={card.isFinished}
+              moveCard={moveCard}
+              wip={card.wip}
+              status={card.status}
+              note={card.note || card.title}
+              newNote={''}
+              members={card.members}
+              due={card.due}
+              percentage={card.percentage}
+            />
           </div>
         )) : ''}
 

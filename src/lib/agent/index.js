@@ -9,10 +9,10 @@ const Agent = ({data}) => {
   return (
       <section className={style.agent}>
         <div className={style.agent_info}>
+          <h1 className={style.info_title}>
           <span className={style.info_image}>
             <img className={style.image_photo} src={data.image} />
-          </span>
-          <h1 className={style.info_title}>{data.name}</h1>
+          </span> {data.name}</h1>
         </div>
         <div className={style.section}>
         <div className={style.section_wrapper}>
