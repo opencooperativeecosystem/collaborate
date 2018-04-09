@@ -1,31 +1,42 @@
 import * as React from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
-import AuthenticatedOnly from '../../AuthenticatedOnly'
-import Login from '../../login/'
 import style from './style.css'
-import { withRouter } from 'react-router'
-import Flag from '../../components/flag'
+import { 
+  Route,
+  Redirect,
+  withRouter
+ } from 'react-router'
 import Sidebar from '../../components/sidebar'
 
-class AppTemplate extends React.Component {
-  render () {
-    const {data, loading, error, children} = this.props
-    return (
-      <AuthenticatedOnly unauthenticatedComponent={<Login />}>
-        {loading ? <strong>Loading...</strong> : (
-          error ? <p style={{ color: '#F00' }}>API error</p> : (
-            <div >
-              <Flag />
-              <Sidebar data={data} agents={data.agentRelationships} />
-              <div className={style.container}>
-                {children}
+const AppTemplate = ({component: Component, ...rest}) => {
+  let isLoggedIn = localStorage.getItem('oce_token')
+  return (
+    <Route
+      {...rest}
+      render={props =>
+        isLoggedIn ? (
+          rest.loading ? <strong>Loading...</strong> : (
+            rest.error ? <p style={{ color: '#F00' }}>API error</p> : (
+              <div >
+                <Sidebar data={rest.data} agents={rest.data.agentRelationships} />
+                <div className={style.container}>
+                  <Component {...props} agentData={rest} />
+                </div>
               </div>
-            </div>
-          ))}
-      </AuthenticatedOnly>
-    )
-  }
+            )
+          )
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/login",
+              state: { from: props.location }
+            }}
+          />
+        )
+      }
+    />
+  )
 }
 
 const agentPlans = gql`

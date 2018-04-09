@@ -1,5 +1,5 @@
 import {compose, withHandlers, withState} from 'recompose'
-import Component from './sidebar'
+import Component from './header'
 
 export default compose(
     withState('panel', 'togglePanel', false),
@@ -12,7 +12,7 @@ export default compose(
         props.toggleProfile(!props.profile)
       },
       logout: props => event => {
-        localStorage.removeItem('oce_token')
+        localStorage.removeItem('token')
         window.location.reload()
       }
     })
