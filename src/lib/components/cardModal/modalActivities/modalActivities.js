@@ -5,6 +5,7 @@ import Button from '../../button'
 import {Cross} from '../../../icons'
 import LogEvent from '../logEvent'
 export default function ({param, units, scopeId, commitmentId, idEventToEdit, editEventModal, toggleEditEvent, idEventToDelete, deleteEventModal, toggleDeleteEvent, activities, id, date, deleteEvent, editEvent, loading, error, refetchData}) {
+  console.log(activities)
   return (
     <div className={style.activities_list}>
       {loading ? '' : (
@@ -32,7 +33,7 @@ export default function ({param, units, scopeId, commitmentId, idEventToEdit, ed
                   <div className={style.desc}>{item.fulfilledBy.note} </div>
                 </div>
                 <div className={style.item_meta}>
-                  {moment(item.fulfilledBy.start.replace(/-/g , ", ")).fromNow()} 
+                  {moment(item.fulfilledBy.start).fromNow()}
                   - <span id={item.id} onClick={() => toggleEditEvent(deleteEventModal, item.fulfilledBy.id)}>Edit</span>
                   - <span id={item.id} onClick={() => toggleDeleteEvent(deleteEventModal, item.fulfilledBy.id)}>Delete</span>
                 </div>
