@@ -10,16 +10,15 @@ const Cards = ({data, link}) => {
             {newData
             .sort((a, b) => b.date - a.date)
             .map((org, i) => (
-            org.planProcesses[0].isFinished ? ''
-            : <div key={i} className={style.lists_item}>
+             <div key={i} className={style.lists_item}>
                 <Link key={i} to={'/' + link + '/' + org.id} className={style.link}>
-                    <h4 className={style.item_title}>{org.name.length > 0 ? org.name : org.planProcesses[0].name}</h4>
+                    <h4 className={style.item_title}>{org.name.length > 0 ? org.name : 'Plan without name'}</h4>
                     <h5 className={style.plan_scope}>{org.note}</h5>
                     <div className={style.item_info}>
-                      <span className={style.info_date}>From {moment.utc(org.plannedOn).format('DD MMM YYYY')} to {moment.utc(org.due).format('DD MMM YYYY')}</span>
-                      <span className={org.planProcesses[0].isFinished ? style.info_status + ' ' + style.completed : org.planProcesses[0].isStarted ? style.info_status + ' ' + style.wip : style.info_status + ' ' + style.todo}>
+                      <span className={style.info_date}>Due to {moment.utc(org.due).format('DD MMM YYYY')}</span>
+                      {/* <span className={org.planProcesses[0].isFinished ? style.info_status + ' ' + style.completed : org.planProcesses[0].isStarted ? style.info_status + ' ' + style.wip : style.info_status + ' ' + style.todo}>
                           {org.planProcesses[0].isFinished ? 'Completed' : org.planProcesses[0].isStarted ? 'In Progress' : 'To do' }
-                      </span>
+                      </span> */}
                     </div>
                 </Link>
             </div>
