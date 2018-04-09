@@ -4,7 +4,6 @@ import {Line} from 'rc-progress'
 import moment from 'moment'
 
 const Card = (props) => {
-  console.log(props)
   const {id, listId, isFinished, openModal, percentage, note, members} = props
   const due = moment(props.due).format('DD MMM YYYY')
   return (
