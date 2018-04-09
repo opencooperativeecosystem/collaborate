@@ -34,10 +34,10 @@ class Canvas extends React.Component {
       ? <section className={style.surface} >
           <header className={style.header}>
             <h1 className={style.title}>
-              {data.name}
               <span className={style.header_scope}>
-                <Link to={'/work/agent/' + data.scope[0].id}>{data.scope[0].name}</Link>
-              </span>
+                <Link to={'/work/'}>All plans</Link>
+              </span> <i>></i> 
+              {data.name}
             </h1>
           </header>
           <div className={style.canvas_board} style={{height: customHeight + 'px'} }>
