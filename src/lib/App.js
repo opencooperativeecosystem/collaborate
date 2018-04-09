@@ -3,63 +3,46 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import style from './App.css'
 import {Link} from 'react-router-dom'
-
-// import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
-// import Feed from './components/feed/feed'
-// import Cards from './components/cards'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import Cards from './components/cards'
 
 const Lists = (props) => {
   const {viewer, loading, error} = props.data
   return (
     loading ? <strong>Loading...</strong> : (
     error ? <p style={{ color: '#F00' }}>API error</p> : (
-      <div className={style.profile_lists}>
-        <div className={style.lists}>
-          <h2 className={style.profile_title}><span role='img'>👋</span> Hello {viewer.myAgent.name}</h2>
-          <div className={style.section}>
-            <div className={style.section_wrapper}>
-              <h5>You can log your work on the following projects:</h5>
-              <div className={style.wrapper_list}>
-                  {viewer.myAgent.agentRelationships.map((item, i) => (
-                    <div className={style.list_item} key={i}>
-                      <Link to={`${props.match.url}/agent/${item.object.id}`}>
-                        <h3>{item.object.name}</h3>
-                        <h5>{item.object.note}</h5>
-                        <h6>{item.relationship.label}</h6>
-                      </Link>
-                    </div>
-                  ))}
-              </div>
-            </div>
-          </div>
-          {/* <h5 className={style.profile_address}>ƒ <span>{viewer.myAgent.faircoinAddress}</span></h5> */}
-          {/* <div className={style.section}>
-            <div className={style.section_wrapper}>
-              <Tabs selectedTabClassName={style.list_active}>
-                <TabList className={style.scope_list}>
-                  <Tab>Overview</Tab>
-                  <Tab>Diary</Tab>
-                </TabList>
-                <TabPanel>
-                  <div className={style.wrapper}>
-                    <Cards
-                      data={viewer.myAgent.agentPlans}
-                      link='work/canvas'
-                    />
-                  </div>
-                </TabPanel>
-                <TabPanel>
-                  <div className={style.section_wrapper}>
-                    <div className={style.wrapper + ' ' + style.wrapper_feed}>
-                      <Feed feed={viewer.myAgent.agentEconomicEvents} />
-                    </div>
-                  </div>
-                </TabPanel>
-              </Tabs>
-            </div>
-          </div> */}
+      <section className={style.agent}>
+      <Tabs selectedTabClassName={style.list_active}>
+      <div className={style.agent_sidebar_wrapper}>
+        <div className={style.agent_sidebar}>
+          <h1>Your Network</h1>
+          <ul className={style.sidebar_panel}>
+            <TabList className={style.scope_list}>
+              {viewer.myAgent.agentRelationships.map((item, i) => (
+                <Tab key={i}>{item.object.name}</Tab>
+              ))}
+            </TabList>
+          </ul>
         </div>
       </div>
+      <div className={style.agent_profile}>
+        {viewer.myAgent.agentRelationships.map((item, i) => (
+          <TabPanel key={i}>
+            <div className={style.agent_info}>
+              <div className={style.info_data}>
+                <h1 className={style.info_title}>{item.object.name}</h1>
+                <h5 className={style.info_note}>{item.object.note}</h5>
+              </div>
+            </div>
+            <Cards
+              data={item.object.agentPlans}
+              link='work/canvas'
+            />
+          </TabPanel>
+        ))}
+    </div>
+    </Tabs>
+  </section>
     ))
   )
 }
@@ -81,6 +64,13 @@ query ($token: String) {
           name
           note
           image
+          agentPlans {
+            name
+            id
+            note
+            due
+            plannedOn
+          }
         }
       }
     }
